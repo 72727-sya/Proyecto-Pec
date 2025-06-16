@@ -1,0 +1,55 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+1
+
+.love.block heart {
+
+2
+
+width: 40px;
+
+3
+
+height: 40px;
+
+4
+
+position: absolute;
+
+5
+
+background:url("heart.png");
+
+6
+
+background-size: contain;
+
+7
+
+/*border: 1px solid;*/
+
+8
+
+box-sizing: border-box;
+
+9
+
+}
